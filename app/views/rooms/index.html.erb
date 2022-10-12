@@ -4,7 +4,26 @@
 
 <div id="rooms" align="center">
   <% @rooms.each do |room| %>
-    <%= render :partial => 'room', :locals => {:room => room} %>
+    <div id="room">
+      <p>
+        <strong>Name:</strong>
+        <%= room.room_name %>
+      </p>
+
+      <p>
+        <strong>Short description:</strong>
+        <%= room.short_description %>
+      </p>
+      <p>
+        <strong>Price:</strong>
+        <%= room.price %>
+      </p>
+
+      <p>
+        <%= link_to image_tag(room.images_as_thumbnails(room.images.last)), room.images.last %>
+      </p>
+
+    </div>
     <p>
       <%= link_to "Book a room", room %>
     </p>
