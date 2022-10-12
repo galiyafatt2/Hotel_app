@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :bookings, only: %i[index show update destroy]
-    resources :reviews, only: %i[index show update destroy]
+    resources :reviews
     resources :rooms
     root 'pages#index'
   end

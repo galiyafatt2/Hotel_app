@@ -22,7 +22,6 @@ module Admin
       flash[:success] = 'Review was deleted'
       redirect_to admin_reviews_path
       end
-    end
 
     private
 
@@ -30,3 +29,5 @@ module Admin
       @review = Review.find(params[:id])
     end
   end
+end
+
