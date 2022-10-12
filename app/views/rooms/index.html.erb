@@ -3,7 +3,7 @@
 <h1 align="center">Rooms</h1> <br>
 
 <div id="rooms" align="center">
-  <% @rooms.each do |room| %>
+  <% @rooms&.each do |room| %>
     <%= render room %>
     <p>
       <%= link_to "Book a room", room %>
