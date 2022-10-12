@@ -34,8 +34,9 @@ module Admin
       Booking.where(room_id: @room.id).each do |booking|
         Booking.destroy(booking.id)
       end
-      @room.destroy
-      redirect_to admin_rooms_path
+      if @room.destroy
+        redirect_to admin_rooms_path
+      end
     end
 
     private
