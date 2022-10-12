@@ -404,6 +404,3 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-
-RUBY VERSION
-   ruby 3.0.2p107
