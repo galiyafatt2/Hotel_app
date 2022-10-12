@@ -1,0 +1,16 @@
+<%= render 'layouts/navigation' %>
+
+<h1 align="center">Listing all reviews</h1>
+<%= render 'form' %>
+<% @reviews.each do |review| %>
+  <div class="row" align="center">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+          <% if review.published %>
+            <%= render review %>
+          <% end %>
+        <br>
+      </div>
+    </div>
+  </div>
+<% end %>

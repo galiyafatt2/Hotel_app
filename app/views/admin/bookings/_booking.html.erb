@@ -1,0 +1,36 @@
+<div align="center" id="<%= dom_id booking %>">
+  <p> <strong> name: </strong>
+    <%= booking.name %>
+
+   <strong>| email: </strong>
+    <%= booking.email %>
+  </p>
+
+  <p> <strong> date of moving in: </strong>
+    <%= booking.move_in %>
+  </p>
+
+  <p> <strong> date of moving out: </strong>
+    <%= booking.move_out %>
+  </p>
+
+  <p> <strong> room: </strong>
+    <%= booking.room_id %>
+
+
+   <strong>| accepted: </strong>
+    <% if booking.accepted %>
+    <span style="color: green;"><%= "yes" %></span>
+    <% else %>
+      <span style="color: red;"><%= "no" %></span>
+    <% end %>
+  </p>
+
+  <p>
+    <% unless booking.accepted %>
+      <%= button_to "Accept this booking", admin_booking_path(booking), method: :put, class: 'btn btn-success' %>
+    <% end %>
+    <%= button_to "Delete this booking", admin_booking_path(booking), method: :delete, class: 'btn btn-danger' %>
+  </p>
+
+</div>

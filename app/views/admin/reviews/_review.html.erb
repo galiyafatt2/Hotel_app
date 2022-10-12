@@ -1,0 +1,26 @@
+<div align="center" id="<%= dom_id review %>">
+  <p> <strong>name: </strong>
+    <%= review.name %>
+  <strong>| email: </strong>
+    <%= review.email %>
+  </p>
+
+  <p> <strong>review: </strong>
+    <%= review.review_text %>
+  </p>
+
+  <strong>published: </strong>
+  <% if review.published %>
+    <span style="color: green;"><%= "yes" %></span>
+  <% else %>
+    <span style="color: red;"><%= "no" %></span>
+  <% end %>
+  </p>
+
+  <p>
+    <% unless review.published %>
+      <%= button_to "Publish this review", admin_review_path(review), method: :put, class: 'btn btn-success' %>
+    <% end %>
+    <%= button_to "Delete this review", admin_review_path(review), method: :delete, class: 'btn btn-danger' %>
+  </p>
+</div>

@@ -1,0 +1,7 @@
+<%= render @booking %>
+
+<p>
+  <%= link_to "Edit this booking", edit_booking_path(@booking) %> |
+  <%= link_to "Back to rooms", rooms_path %>
+  <%= button_to "Destroy this booking", @booking, method: :delete %>
+</p>

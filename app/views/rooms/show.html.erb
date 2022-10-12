@@ -1,0 +1,26 @@
+<p>
+  <strong>Name:</strong>
+  <%= @room.room_name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @room.short_description %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @room.price %>
+</p>
+  <p>
+    <strong>Long description:</strong>
+    <%= @room.long_description %>
+  </p>
+<p>
+  <% @room.images.each do |image|%>
+    <%= link_to image_tag(@room.images_as_thumbnails(image)), image %>
+  <%end%>
+</p>
+<%= render :partial => '/bookings/form', :locals => {:room_id => @room.id} %>
+<div>
+  <%= link_to "Back to rooms", rooms_path %>
+</div>

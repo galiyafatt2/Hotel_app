@@ -1,0 +1,33 @@
+<% if @booking.errors.any? %>
+  <h2>The following errors prevented the article from saving:</h2>
+  <ul>
+    <% @booking.errors.full_messages.each do |msg|%>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: @booking do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :move_in %><br>
+    <%= f.date_field :move_in %>
+  </p>
+  <p>
+    <%= f.label :move_out %><br>
+    <%= f.date_field :move_out %>
+  </p>
+  <p>
+    <%= f.label :room_id %><br>
+    <%= f.number_field :room_id, :value => room_id %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p><% end %>

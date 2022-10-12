@@ -1,0 +1,48 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+
+Metrics/AbcSize:
+  Max: 30
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 72
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 35
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 9
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Enabled: false
+  Exclude:
+    - 'app/controllers/admin/bookings_controller.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+  Exclude:
+    - 'app/controllers/admin/bookings_controller.rb'
+    - 'app/controllers/admin/reviews_controller.rb'
+    - 'app/controllers/admin/rooms_controller.rb'
+
+Style/IfUnlessModifier:
+  Enabled: false
+  Exclude:
+    - 'bin/bundle'
+
+Layout/LineLength:
+  Enabled: false
+  Max: 198

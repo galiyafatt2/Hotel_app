@@ -1,0 +1,9 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Home", '/admin', class: "navbar-brand", id: "logo" %>
+    <%= link_to "Rooms", admin_rooms_path, class: "navbar-brand", id: "logo" %>
+    <%= link_to "Reviews", admin_reviews_path, class: "navbar-brand", id: "logo" %>
+    <%= link_to "Bookings", admin_bookings_path, class: "navbar-brand", id: "logo" %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "navbar-brand", id: "logo" %>
+  </div>
+</nav>

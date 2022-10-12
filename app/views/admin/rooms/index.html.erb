@@ -1,0 +1,24 @@
+<%= render 'admin/layouts/navigation' %>
+
+<h1 align="center">List of rooms</h1>
+<p align="center"><%= link_to "New room", new_admin_room_path %></p>
+<br>
+<table border="2" align="center">
+  <tr>
+    <th>Room name</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.room_name %></td>
+      <td><%= room.created_at %></td>
+      <td><%= room.updated_at %></td>
+      <td>
+      <%= button_to "Update", edit_admin_room_path(room), method: :get %></td>
+      <td><%= button_to "Destroy", admin_room_path(room), method: :delete %></td>
+
+    </tr>
+  <% end %>
+</table>
+

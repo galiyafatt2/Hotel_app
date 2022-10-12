@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'confirmed_bookings') do |sheet|
+  sheet.add_row %w[id
+                   name
+                   email
+                   move_in
+                   move_out
+                   room_id]
+  Booking.all.where(accepted: true).each do |booking|
+    sheet.add_row [booking.id,
+                   booking.name,
+                   booking.email,
+                   booking.move_in,
+                   booking.move_out,
+                   booking.room_id]
+  end
+end

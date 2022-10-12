@@ -1,0 +1,10 @@
+<% headers = ['id', 'name', 'email', 'move_in', 'move_out', 'room_id'] %>
+<%= CSV.generate_line headers %>
+<% Booking.all.where(accepted: true).each do |booking| %>
+  <%= CSV.generate_line([booking.id,
+                         booking.name,
+                         booking.email,
+                         booking.move_in,
+                         booking.move_out,
+                         booking.room_id]) %>
+<% end %>

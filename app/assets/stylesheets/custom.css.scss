@@ -1,0 +1,39 @@
+$navbar-default-bg: #40795f;
+//@import "bootstrap-sprockets";
+@import "bootstrap";
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+body {
+  background: #e1bf94;
+}
+
+#logo {
+  float: left;
+  font-size: 1.3em;
+  color: #40795f;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover{
+  background-color: white;
+  text-decoration: none;
+}
+#review{
+  background-color: #ecc4b1;
+  border-top: 1px solid white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#room{
+  background-color: #ecc4b1;
+  border-top: 1px solid white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+

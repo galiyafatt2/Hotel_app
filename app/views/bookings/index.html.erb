@@ -1,0 +1,13 @@
+<%= render 'layouts/navigation' %>
+
+<h1 align="center">List of bookings</h1>
+<div id="bookings">
+  <% @bookings.each do |booking| %>
+    <%= render booking %>
+    <p>
+      <%= link_to "Show", booking %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Make new booking", new_booking_path %>
