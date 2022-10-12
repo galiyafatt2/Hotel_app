@@ -3,12 +3,10 @@
 <h1 align="center">Rooms</h1> <br>
 
 <div id="rooms" align="center">
-  <% if @rooms %>
-      <% @rooms.each do |room| %>
-        <%= render room %>
-        <p>
-          <%= link_to "Book a room", room %>
-        </p>
-      <% end %>
-    <% end %>
+  <% @rooms.each do |room| %>
+    <%= render room %>
+    <p>
+      <%= link_to "Book a room", room %>
+    </p>
+  <% end %>
 </div>

@@ -35,7 +35,7 @@ module Admin
         Booking.destroy(booking.id)
       end
       if @room.destroy
-        redirect_to 'admin/rooms'
+        redirect_to admin_rooms_path
       end
     end
 
