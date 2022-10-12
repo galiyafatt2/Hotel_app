@@ -20,13 +20,13 @@ module Admin
 
     def create
       @room = Room.new(room_params)
-      redirect_to admin_room_path(@room), notice: 'Room was successfully created.' if @room.save
+      redirect_to admin_rooms_path, notice: 'Room was successfully created.' if @room.save
     end
 
     def update
       if @room.update(room_params)
         flash[:success] = 'Room was updated.'
-        redirect_to admin_room_path(@room)
+        redirect_to admin_rooms_path
       end
     end
 
@@ -35,7 +35,7 @@ module Admin
         Booking.destroy(booking.id)
       end
       if @room.destroy
-        redirect_to admin_rooms_path
+        redirect_to 'admin/rooms'
       end
     end
 
