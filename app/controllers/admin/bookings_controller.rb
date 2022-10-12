@@ -30,6 +30,7 @@ module Admin
 
     def destroy
       @booking.destroy
+      redirect_to admin_bookings_path
     end
 
     def export

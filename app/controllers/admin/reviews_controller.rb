@@ -18,9 +18,9 @@ module Admin
     end
 
     def destroy
-      if @review.destroy
-        flash[:success] = 'Review was deleted'
-        redirect_to admin_reviews_path
+      @review.destroy
+      flash[:success] = 'Review was deleted'
+      redirect_to admin_reviews_path
       end
     end
 
@@ -30,4 +30,3 @@ module Admin
       @review = Review.find(params[:id])
     end
   end
-end
