@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def image_tag(source, options={})
-    source = 'assets/images/blank.jpg' unless super(source, options)
+    source = 'assets/images/blank.jpg' if source.blank?
     super(source, options)
   end
 end
