@@ -27,7 +27,7 @@ module Admin
     def update
       if @room.update(room_params)
         flash[:notice] = 'Room was updated.'
-        redirect_to admin_rooms_url(@room)
+        redirect_to admin_rooms_url
       else
         render :edit, status: :bad_request
       end
