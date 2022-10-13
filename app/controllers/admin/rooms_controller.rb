@@ -16,7 +16,8 @@ module Admin
       @room = Room.new
     end
 
-    def edit; end
+    def edit;
+    end
 
     def create
       @room = Room.new(room_params)
@@ -24,6 +25,7 @@ module Admin
     end
 
     def update
+      set_room
       if @room.update(room_params)
         flash[:success] = 'Room was updated.'
         redirect_to admin_rooms_path
