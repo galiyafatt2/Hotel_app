@@ -6,6 +6,7 @@ class Room < ApplicationRecord
 
   def images_as_thumbnails(image)
     return unless image.content_type.in?(%w[image/jpg image/jpeg image/png])
+    return if image.blank?
 
     image.variant(resize_to_limit: [400, 200]).processed
   end
