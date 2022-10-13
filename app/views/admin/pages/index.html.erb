@@ -3,7 +3,7 @@
 <h1 align="center"> Welcome, admin </h1>
 
 <div align="center">
-  <% @rooms.last(3).each do |room|%>
+  <% @rooms.each do |room|%>
     <% room.images.limit(1).each do |image|%>
       <%= link_to image_tag(room.images_as_thumbnails(image)), image %>
     <%end%>
