@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :rooms
     root 'pages#index'
+    post 'rooms/:id', controller: 'rooms', action: :update
   end
   root 'pages#index'
-  get 'export(.:format)', to: 'bookings#export'
 end

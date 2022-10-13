@@ -7,6 +7,6 @@
   <p> <strong>updated: </strong>
     <%= room.updated_at %></p>
 </td>
-<td> <%= button_to "Edit", edit_admin_room_path(room),method: :get, class: "btn btn-xs btn-primary" %>&nbsp; </td>
+<td> <%= button_to "Edit", edit_admin_room_path(room), method: :get, class: "btn btn-xs btn-primary" %>&nbsp; </td>
 <td> <%= button_to "Delete", admin_room_path(room), method: :delete, data: { confirm: "Are you sure you want to delete this room?"}, class: "btn btn-xs btn-danger" %></td>
 </div>
