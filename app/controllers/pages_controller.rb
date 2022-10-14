@@ -3,8 +3,12 @@
 class PagesController < ApplicationController
   include HTTParty
   def index
+    begin
     redirect_to '/admin' if user_signed_in?
     @rooms = Room.all.with_attached_images
+    rescue Redis::CannotConnectError
+      redirect_to root_path
+    end
     weather
   end
 
