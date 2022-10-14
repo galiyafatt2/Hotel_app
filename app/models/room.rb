@@ -10,8 +10,6 @@ class Room < ApplicationRecord
 
     image.variant(resize_to_limit: [400, 200]).processed
     rescue Redis::CannotConnectError
-    rescue ActionView::Template::Error
-      p "no image"
     end
   end
 end
