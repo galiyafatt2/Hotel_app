@@ -9,6 +9,7 @@ class Room < ApplicationRecord
     return unless image.content_type.in?(%w[image/jpg image/jpeg image/png])
 
     image.variant(resize_to_limit: [400, 200]).processed
+    rescue Redis::CannotConnectError
     rescue ActionView::Template::Error
       p "no image"
     end
