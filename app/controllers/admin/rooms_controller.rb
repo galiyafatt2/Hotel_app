@@ -32,7 +32,7 @@ module Admin
         else
           render :edit, status: :bad_request
         end
-      rescue CannotConnectError
+      rescue Redis::CannotConnectError
       end
     end
 
