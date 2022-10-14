@@ -25,11 +25,14 @@ module Admin
     end
 
     def update
-      if @room.update(room_params)
-        flash[:notice] = 'Room was updated.'
-        redirect_to admin_rooms_path
-      else
-        render :edit, status: :bad_request
+      begin
+        if @room.update(room_params)
+          flash[:notice] = 'Room was updated.'
+          redirect_to admin_rooms_path
+        else
+          render :edit, status: :bad_request
+        end
+      rescue CannotConnectError
       end
     end
 
