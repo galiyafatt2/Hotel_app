@@ -6,9 +6,8 @@ module Admin
     def index
       begin
         @rooms = Room.all.with_attached_images
-        rescue Redis::CannotConnectError
-        rescue ActionView::Template::Error
-          p "no images here"
+      rescue Redis::CannotConnectError
+        redirect_to root_path
       end
     end
   end
