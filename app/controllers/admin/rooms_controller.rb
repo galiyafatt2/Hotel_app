@@ -32,7 +32,8 @@ module Admin
         else
           render :edit, status: :bad_request
         end
-      rescue Redis::CannotConnectError
+      rescue Redis::CannotConnectError # heroku doesn't let redis to work correctly,
+        # but this mistake doesn't affect app procedures
         redirect_to admin_rooms_path
       end
     end

@@ -12,10 +12,10 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/admin/bookings", type: :request do
+RSpec.describe "/bookings", type: :request do
   
   # This should return the minimal set of attributes required to create a valid
-  # Admin::Booking. As you add validations to Admin::Booking, be sure to
+  # Booking. As you add validations to Booking, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {name: "name", email: "email@mail.ru", move_in: "10.01.2023", move_out: "12.01.2023", room_id: 24}
@@ -25,19 +25,14 @@ RSpec.describe "/admin/bookings", type: :request do
     {name: "name", email: "email@mail.ru", move_out: "12.01.2023", room_id: 24}
   }
 
-  let(:admin) do
-    User.create! email: 'example@mail.ru', password: 'example'
-  end
-
   before do
-    login_as(admin)
     Room.create! room_name: "name", long_description: "desc", short_description: "short", id: 24, price: 12
   end
 
   describe "GET /index" do
     it "renders a successful response" do
       Booking.create! valid_attributes
-      get admin_bookings_url
+      get bookings_url
       expect(response).to be_successful
     end
   end
@@ -45,45 +40,78 @@ RSpec.describe "/admin/bookings", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       booking = Booking.create! valid_attributes
-      get admin_booking_url(booking)
+      get booking_url(booking)
       expect(response).to be_successful
+    end
+  end
+
+  describe "GET /edit" do
+    it "renders a successful response" do
+      booking = Booking.create! valid_attributes
+      get edit_booking_url(booking)
+      expect(response).to be_successful
+    end
+  end
+
+  describe "POST /create" do
+    context "with valid parameters" do
+      it "creates a new Booking" do
+        expect {
+          post bookings_url, params: { booking: valid_attributes }
+        }.to change(Booking, :count).by(1)
+      end
+
+      it "redirects to the created booking" do
+        post bookings_url, params: { booking: valid_attributes }
+        expect(response).to redirect_to(booking_url(Booking.last))
+      end
+    end
+
+    context "with invalid parameters" do
+      it "does not create a new Booking" do
+        expect {
+          post bookings_url, params: { booking: invalid_attributes }
+        }.to change(Booking, :count).by(0)
+      end
+    
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        {name: "name", email: "email@mail.ru", move_in: "10.01.2023", move_out: "12.01.2023", accepted: true, room_id: 24}
+        {name: "name_change", email: "email@mail.ru", move_out: "12.01.2023", room_id: 24}
       }
 
-      it "updates the requested admin_booking" do
+      it "updates the requested booking" do
         booking = Booking.create! valid_attributes
-        patch admin_booking_url(booking), params: { booking: new_attributes }
+        patch booking_url(booking), params: { booking: new_attributes }
         booking.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the admin_bookings" do
+      it "redirects to the booking" do
         booking = Booking.create! valid_attributes
-        patch admin_booking_url(booking), params: { booking: new_attributes }
+        patch booking_url(booking), params: { booking: new_attributes }
         booking.reload
-        expect(response).to redirect_to(admin_bookings_url)
+        expect(response).to redirect_to(booking_url(booking))
       end
     end
+
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested admin_booking" do
+    it "destroys the requested booking" do
       booking = Booking.create! valid_attributes
       expect {
-        delete admin_booking_url(booking)
+        delete booking_url(booking)
       }.to change(Booking, :count).by(-1)
     end
 
-    it "redirects to the admin_bookings list" do
+    it "redirects to the rooms list" do
       booking = Booking.create! valid_attributes
-      delete admin_booking_url(booking)
-      expect(response).to redirect_to(admin_bookings_url)
+      delete booking_url(booking)
+      expect(response).to redirect_to(rooms_url)
     end
   end
 end

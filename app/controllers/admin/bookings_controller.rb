@@ -8,12 +8,15 @@ module Admin
     def index
       @bookings = Booking.all.order(created_at: :desc)
       respond_to do |format|
-        format.html
+        format.html {render status: :ok}
         format.csv do
-          Booking.to_csv
-          render template: 'admin/bookings/index'
+          send_data ExportBookingsCsvJob.new.perform,
+                    filename: "bookings.csv"
         end
-        format.xlsx { Booking.to_xlsx }
+        format.xlsx do
+          send_data ExportBookingsCsvJob.new.perform,
+                    filename: "bookings.xlsx"
+        end
       end
     end
 
@@ -23,21 +26,25 @@ module Admin
 
     def update
       if @booking.update(accepted: true)
-        flash[:success] = 'Booking was updated'
+        flash[:success] = "Booking was updated"
         redirect_to admin_bookings_path
       end
     end
 
     def destroy
       @booking.destroy
-      redirect_to admin_bookings_path
     end
 
     def export
       respond_to do |format|
+        format.html {render status: :ok}
         format.csv do
-          send_data Booking.all.where(accepted: true).to_csv.perform_async(*args),
-                    filename: “bookings.csv”
+          send_data ExportBookingsCsvJob.new.perform,
+                    filename: "bookings.csv"
+        end
+        format.xlsx do
+          send_data ExportBookingsCsvJob.new.perform,
+                    filename: "bookings.xlsx"
         end
       end
     end

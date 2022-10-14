@@ -3,7 +3,7 @@
 class ExportBookingsXlsxJob < ApplicationJob
   queue_as :default
 
-  def perform(*_args)
+  def perform
     workbook = RubyXL::Workbook.new
     worksheet = workbook.add_worksheet('bookings')
     worksheet.add_cell(0, 0, 'Id')

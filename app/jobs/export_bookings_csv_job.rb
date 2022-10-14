@@ -3,8 +3,8 @@
 class ExportBookingsCsvJob < ApplicationJob
   queue_as :default
 
-  def perform(*_args)
-    attributes = %w[id name email move_in move_out room_id]
+  def perform
+    attributes = %w{id name email move_in move_out room_id}
     CSV.generate(headers: true) do |csv|
       csv << attributes
       Booking.all.where(accepted: true).order(created_at: :desc).each do |booking|
