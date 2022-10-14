@@ -6,7 +6,7 @@
   <% @rooms.each do |room|%>
     <% if room.images %>
       <% room.images.limit(1).each do |image|%>
-        <%= link_to image_tag(room.images_as_thumbnails(image) || "coverage/assets/0.12.3/magnify.png"), image %>
+        <%= link_to image_tag(room.images_as_thumbnails(image) || "public/assets/apple-touch-icon.png"), image %>
       <%end%>
     <% end %>
   <% end %>
