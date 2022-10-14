@@ -21,7 +21,7 @@ module Admin
       @review.destroy
       flash[:success] = 'Review was deleted'
       redirect_to admin_reviews_path
-      end
+    end
 
     private
 
@@ -30,4 +30,3 @@ module Admin
     end
   end
 end
-

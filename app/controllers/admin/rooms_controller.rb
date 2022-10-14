@@ -16,8 +16,7 @@ module Admin
       @room = Room.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @room = Room.new(room_params)
@@ -25,17 +24,15 @@ module Admin
     end
 
     def update
-      begin
-        if @room.update(room_params)
-          flash[:notice] = 'Room was updated.'
-          redirect_to admin_rooms_path
-        else
-          render :edit, status: :bad_request
-        end
-      rescue Redis::CannotConnectError # heroku doesn't let redis to work correctly,
-        # but this mistake doesn't affect app procedures
+      if @room.update(room_params)
+        flash[:notice] = 'Room was updated.'
         redirect_to admin_rooms_path
+      else
+        render :edit, status: :bad_request
       end
+    rescue Redis::CannotConnectError # heroku doesn't let redis to work correctly,
+      # but this mistake doesn't affect app procedures
+      redirect_to admin_rooms_path
     end
 
     def destroy
