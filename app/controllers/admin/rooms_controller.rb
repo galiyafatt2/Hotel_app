@@ -30,9 +30,10 @@ module Admin
           flash[:notice] = 'Room was updated.'
           redirect_to admin_rooms_path
         else
-          redirect_to admin_rooms_path, status: :bad_request
+          render :edit, status: :bad_request
         end
       rescue Redis::CannotConnectError
+        redirect_to admin_rooms_path
       end
     end
 
