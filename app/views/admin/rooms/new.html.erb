@@ -1,5 +1,7 @@
-<h1>New room</h1>
+<%= render 'admin/layouts/navigation' %>
+
+<h1 align="center">Добавление комнаты</h1>
 <%= render 'form' , room: @room %>
-<div>
-  <%= link_to "Back to rooms", admin_rooms_url %>
+<div align="center">
+  <%= link_to "К списку комнат", admin_rooms_url %>
 </div>

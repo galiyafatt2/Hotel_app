@@ -1,26 +1,26 @@
-<div align="center" id="<%= dom_id review %>">
-  <p> <strong>name: </strong>
+<div align="center" id="review">
+  <p> <strong>имя: </strong>
     <%= review.name %>
   <strong>| email: </strong>
     <%= review.email %>
   </p>
 
-  <p> <strong>review: </strong>
+  <p> <strong>отзыв: </strong>
     <%= review.review_text %>
   </p>
 
-  <strong>published: </strong>
+  <strong>опубликовано: </strong>
   <% if review.published %>
-    <span style="color: green;"><%= "yes" %></span>
+    <span style="color: green;"><%= "да" %></span>
   <% else %>
-    <span style="color: red;"><%= "no" %></span>
+    <span style="color: red;"><%= "нет" %></span>
   <% end %>
   </p>
 
   <p>
     <% unless review.published %>
-      <%= button_to "Publish this review", admin_review_path(review), method: :put, class: 'btn btn-success' %>
+      <%= button_to "Опубликовать отзыв", admin_review_path(review), method: :put, class: 'btn btn-success' %>
     <% end %>
-    <%= button_to "Delete this review", admin_review_path(review), method: :delete, class: 'btn btn-danger' %>
+    <%= button_to "Удалить отзыв", admin_review_path(review), method: :delete, class: 'btn btn-danger' %>
   </p>
 </div>

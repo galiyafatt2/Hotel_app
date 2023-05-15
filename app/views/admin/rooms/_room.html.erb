@@ -1,12 +1,45 @@
-<div id="<%= dom_id room %>">
-  <td>
-  <p> <strong>name: </strong>
-    <%= room.room_name %></p>
-  <p> <strong>created: </strong>
-    <%= room.created_at %></p>
-  <p> <strong>updated: </strong>
-    <%= room.updated_at %></p>
-</td>
-<td> <%= button_to "Edit", edit_admin_room_path(room), method: :get, class: "btn btn-xs btn-primary" %>&nbsp; </td>
-<td> <%= button_to "Delete", admin_room_path(room), method: :delete, data: { confirm: "Are you sure you want to delete this room?"}, class: "btn btn-xs btn-danger" %></td>
+<%= render 'admin/layouts/navigation' %>
+
+<div align="center" class="rooms-form">
+  <div id="<%= dom_id room %>">
+    <td>
+      <p><strong>номер комнаты: </strong>
+        <%= room.id %></p>
+    <p> <strong>название комнаты: </strong>
+      <%= room.room_name %></p>
+    <p> <strong>создана: </strong>
+      <%= room.created_at %></p>
+    <p> <strong>обновлена: </strong>
+      <%= room.updated_at %></p>
+    <p> <strong>статус: </strong>
+      <% if room.status%>
+        <span style="color: red"> занята </span>
+      <% else %>
+        <span style="color: green"> свободна </span>
+      <% end %>
+    </p>
+  </td>
+
+    <b>Активные брони: </b>
+    <table align="center">
+      <tr>
+        <th>Имя</th>
+        <th>email</th>
+        <th>Дата заезда</th>
+        <th>Дата выезда</th>
+      </tr>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.name %></td>
+          <td><%= booking.email %></td>
+          <td><%= booking.move_in %></td>
+          <td><%= booking.move_out %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <p> <%= button_to "Редактировать", edit_admin_room_path(room), method: :get %> </p>
+  <p> <%= button_to "Удалить", admin_room_path(room), method: :delete, data: { confirm: "Вы уыерены, что хотите удалить эту комнату?" } %></p>
+
 </div>

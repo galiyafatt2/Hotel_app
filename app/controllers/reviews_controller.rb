@@ -13,8 +13,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      flash[:notice] = 'Review was successfully created'
-      redirect_to reviews_path
+      redirect_to reviews_path, notice: 'Отзыв был добавлен, его одобряет администратор!'
     else
       @reviews = Review.all.where(published: true).order(created_at: :desc)
       render 'reviews/index'

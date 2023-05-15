@@ -1,7 +1,7 @@
 
 <%= render 'layouts/navigation' %>
 
-<h1 align="center"> Welcome to our Hotel </h1>
+<h1 align="center"> Добро пожаловать в Guest House </h1>
 
 <div align="center">
   <% @rooms.each do |room|%>
@@ -13,20 +13,28 @@
   <% end %>
 </div>
 <br> <br>
-<p align="center"> <b> Saint-Petersburg's weather: </b> </p>
-<div>
-  <table border="2" align="center">
-      <tr>
-        <td><strong>Temperature</strong></td>
-        <td><%= @temp %></td>
-      </tr>
-      <tr>
-        <td><strong>Clouds</strong></td>
-        <td><%= @clouds %></td>
-      </tr>
-      <tr>
-        <td><strong>Wind</strong></td>
-        <td><%= @wind %></td>
-      </tr>
-  </table>
+<div class="info" align="center">
+  <div>
+    <b>Наше расположение: </b>
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5d0861e6033523d3605860f5d872a1b18ea703a5413eb35ad3f147a811c4e6a4&amp;width=548&amp;height=540&amp;lang=ru_RU&amp;scroll=true"></script>
+  </div>
+  <div>
+    <p align="center"> <b> Погода в Санкт-Петербурге: </b> </p>
+    <div>
+      <table border="2" align="center">
+        <tr>
+          <td><strong>Температура</strong></td>
+          <td><%= @temp %></td>
+        </tr>
+        <tr>
+          <td><strong>Облачность</strong></td>
+          <td><%= @clouds %></td>
+        </tr>
+        <tr>
+          <td><strong>Ветер</strong></td>
+          <td><%= @wind %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
