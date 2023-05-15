@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>Ваша бронь на <%=@booking.move_in %> - <%=@booking.move_out %> была одобрена !</p>
+<p>
+  Детали брони<br>
+  --------------------------
+</p>
+<table>
+  <tr>
+    <td> Имя: </td> <td> <%= @booking.name %> </td>
+  </tr>
+   <tr>
+    <td> Email: </td> <td> <%= @booking.email %> </td>
+   </tr>
+  <tr>
+    <td> Заезд: </td> <td> <%= @booking.move_in %> </td>
+  </tr>
+  <tr>
+    <td> Выезд: </td> <td> <%= @booking.move_out %> </td>
+  </tr>
+  <tr>
+    <td> Номер комнаты: </td> <td> <%= @booking.room.id %> </td>
+  </tr>
+</table>
+</body>
+</html>
