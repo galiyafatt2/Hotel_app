@@ -21,7 +21,7 @@ module Admin
 
     def create
       @room = Room.new(room_params)
-      redirect_to admin_rooms_path, notice: 'Room was successfully created.' if @room.save
+      redirect_to admin_rooms_path, notice: 'Комната была создана.' if @room.save
     end
 
     def update
@@ -31,7 +31,6 @@ module Admin
       else
         render :edit, status: :bad_request
       end
-      redirect_to admin_rooms_path
     end
 
     def destroy
