@@ -26,6 +26,7 @@ module Admin
 
     def update
       if @booking.update(accepted: true)
+        BookingMailer.with(booking: @booking).booking_approved.deliver_now
         redirect_to admin_bookings_path, notice: 'Бронь обновлена'
       end
     end

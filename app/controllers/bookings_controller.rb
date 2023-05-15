@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    redirect_to booking_url(@booking) if @booking.save
+    redirect_to rooms_url, notice: 'Бронь отправлена на одобрение' if @booking.save
   end
 
   def destroy
