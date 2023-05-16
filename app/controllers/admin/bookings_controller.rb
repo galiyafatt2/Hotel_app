@@ -6,7 +6,7 @@ module Admin
     before_action :set_booking, only: %i[show edit update destroy]
 
     def index
-      @bookings = Booking.all.order(created_at: :desc)
+      @bookings = Booking.where("move_out > ?", Date.today).order(created_at: :desc)
       respond_to do |format|
         format.html { render status: :ok }
         format.csv do
@@ -26,8 +26,8 @@ module Admin
 
     def update
       if @booking.update(accepted: true)
-        flash[:success] = 'Booking was updated'
-        redirect_to admin_bookings_path
+        BookingMailer.with(booking: @booking).booking_approved.deliver_now
+        redirect_to admin_bookings_path, notice: 'Бронь обновлена'
       end
     end
 

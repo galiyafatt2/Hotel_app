@@ -10,6 +10,7 @@ module Admin
 
     def show
       @room_photos = @room.images.all
+      @bookings = @room.active_bookings.where(accepted: true)
     end
 
     def new
@@ -20,19 +21,16 @@ module Admin
 
     def create
       @room = Room.new(room_params)
-      redirect_to admin_rooms_path, notice: 'Room was successfully created.' if @room.save
+      redirect_to admin_rooms_path, notice: 'Комната была создана.' if @room.save
     end
 
     def update
       if @room.update(room_params)
         flash[:notice] = 'Room was updated.'
-        redirect_to admin_rooms_path
+        redirect_to admin_rooms_path, notice: 'Комната была обновлена'
       else
         render :edit, status: :bad_request
       end
-    rescue Redis::CannotConnectError # heroku doesn't let redis to work correctly,
-      # but this mistake doesn't affect app procedures
-      redirect_to admin_rooms_path
     end
 
     def destroy

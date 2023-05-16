@@ -9,7 +9,7 @@
 
 <%= form_with model: @review do |f| %>
   <p>
-    <%= f.label :name %><br>
+    <%= f.label 'Имя' %><br>
     <%= f.text_field :name %>
   </p>
   <p>
@@ -17,9 +17,9 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :review_text %><br>
+    <%= f.label 'Отзыв' %><br>
     <%= f.text_area :review_text %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Отправить отзыв на проверку" %>
   </p><% end %>

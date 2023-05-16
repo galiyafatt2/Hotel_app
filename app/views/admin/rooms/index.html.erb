@@ -1,22 +1,33 @@
 <%= render 'admin/layouts/navigation' %>
 
-<h1 align="center">List of rooms</h1>
-<p align="center"><%= link_to "New room", new_admin_room_path %></p>
+<h1 align="center">Список комнат</h1>
+<p align="center"><%= link_to "Добавить комнату", new_admin_room_path %></p>
 <br>
 <table border="2" align="center">
   <tr>
-    <th>Room name</th>
-    <th>Created at</th>
-    <th>Updated at</th>
+    <th>Номер комнаты</th>
+    <th>Название комнаты</th>
+    <th>Создана</th>
+    <th>Отредактирована</th>
+    <th>Статус</th>
   </tr>
   <% @rooms.each do |admin_room| %>
     <tr>
+      <td><%= admin_room.id %></td>
       <td><%= admin_room.room_name %></td>
       <td><%= admin_room.created_at %></td>
       <td><%= admin_room.updated_at %></td>
       <td>
-      <%= button_to "Update", edit_admin_room_path(admin_room), method: :get %></td>
-      <td><%= button_to "Destroy", admin_room_path(admin_room), method: :delete %></td>
+        <% if admin_room.status%>
+          <span style="color: red"> занята </span>
+        <% else %>
+          <span style="color: green"> свободна </span>
+        <% end %>
+      </td>
+      <td>
+      <%= button_to "Редактировать", edit_admin_room_path(admin_room), method: :get %></td>
+      <td><%= button_to "Показать", admin_room_path(admin_room), method: :get %></td>
+      <td><%= button_to "Удалить", admin_room_path(admin_room), method: :delete %></td>
 
     </tr>
   <% end %>

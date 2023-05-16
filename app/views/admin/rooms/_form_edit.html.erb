@@ -7,36 +7,42 @@
   </ul>
 <% end %>
 
-
-<%= form_for :room, url: admin_room_path, data: {turbo:false} do |form| %>
+<div align="center" class="rooms-form">
+  <%= form_for :room, url: admin_room_path, data: {turbo:false} do |form| %>
   <div>
-    <%= form.label :room_name, style: "display: block" %>
+    <%= form.label 'Название комнаты', style: "display: block" %>
     <%= form.text_field :room_name %>
   </div>
 
   <div>
-    <%= form.label :long_description, style: "display: block" %>
+    <%= form.label "Подробное описание", style: "display: block" %>
     <%= form.text_area :long_description %>
   </div>
 
   <div>
-    <%= form.label :short_description, style: "display: block" %>
+    <%= form.label "Описание", style: "display: block" %>
     <%= form.text_area :short_description %>
   </div>
 
 
   <div>
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label "Цена", style: "display: block" %>
     <%= form.number_field :price %>
   </div>
   <br>
   <div>
-    <%= form.label "Add images:", style: "display: block" %>
+    <%= form.label "Добавить изображение:", style: "display: block" %>
+    <% room.images.each do |image|%>
+      <%= link_to image_tag(room.images_as_thumbnails(image)), image %>
+    <%end%>
+  </div>
+  <div>
     <%= form.file_field :images, multiple: true %><br>
   </div>
   <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Сохранить" %>
   </div>
 
 <% end %>
+</div>

@@ -1,8 +1,8 @@
 <%= render 'admin/layouts/navigation' %>
 
-<h1 align="center">List of bookings</h1>
-<p align="center"><%= link_to "Download CSV of accepted bookings", admin_bookings_path(format: :csv) %></p>
-<p align="center"><%= link_to "Download XLSX of accepted bookings", admin_bookings_path(format: :xlsx) %></p>
+<h1 align="center">Список броней</h1>
+<p align="center"><%= link_to "Скачать CSV броней", admin_bookings_path(format: :csv) %></p>
+<p align="center"><%= link_to "Скачать XLSX броней", admin_bookings_path(format: :xlsx) %></p>
 <% @bookings.each do |admin_booking| %>
   <%= render admin_booking %>
 <% end %>

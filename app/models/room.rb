@@ -10,4 +10,15 @@ class Room < ApplicationRecord
 
     image.variant(resize_to_limit: [400, 200]).processed
   end
+
+  def status
+    bookings.each do |booking|
+      return true if (booking.move_in..booking.move_out).cover?(Date.today)
+    end
+    false
+  end
+
+  def active_bookings
+    bookings.where("move_out > ?", Date.today)
+  end
 end

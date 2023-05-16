@@ -62,9 +62,9 @@ RSpec.describe '/bookings', type: :request do
         end.to change(Booking, :count).by(1)
       end
 
-      it 'redirects to the created booking' do
+      it 'redirects to the rooms' do
         post bookings_url, params: { booking: valid_attributes }
-        expect(response).to redirect_to(booking_url(Booking.last))
+        expect(response).to redirect_to(rooms_url)
       end
     end
 

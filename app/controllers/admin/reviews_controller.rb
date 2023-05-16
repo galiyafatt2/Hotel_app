@@ -12,15 +12,13 @@ module Admin
 
     def update
       if @review.update(published: true)
-        flash[:success] = 'Review was published'
-        redirect_to admin_reviews_path
+        redirect_to admin_reviews_path, notice: 'Отзыв был опубликован'
       end
     end
 
     def destroy
       @review.destroy
-      flash[:success] = 'Review was deleted'
-      redirect_to admin_reviews_path
+      redirect_to admin_reviews_path, notice: 'Отзыв был удален'
     end
 
     private

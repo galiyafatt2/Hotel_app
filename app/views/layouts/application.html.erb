@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hotel</title>
+    <title>Guest house</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <div class="flex-wrapper">
+    <div class="body">
     <%= yield %>
-  </body>
+    </div>
+
+    <div class="footer">
+      <p align="center"> Guest house | 2023 </p>
+    </div>
+  </div>
 </html>
